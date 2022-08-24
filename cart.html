@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <link rel="stylesheet" href="./cart.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <header class="">
+        <div class="main-part mt-5">
+            <div class="logo d-flex "><img src="./images/logo.png" alt="" style="width:20%;" class="img">
+                <h1>Harmedino</h1>
+            </div>
+            <!--  -->
+            <div class="list mt-4">
+                <a href="#">HANDGUNS</a>
+                <a href="#">MAGAZINES</a>
+                <a href="#">AMMO</a>
+                <a href="#">ACCESSORIES</a>
+            </div>
+        </div>
+        <div class="log">
+            <div class="account">
+                <a href="$"><i class="fa fa-user"></i>MY ACCOUNT</a> |
+                <a href="#">SIGN IN</a>
+                <a href="#"><i class="fa fa-cart"></i>
+                    <span>(1)</span>
+                </a>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="search text">
+            </div>
+        </div>
+    </header>
+
+    <div class="move mt-3 ml-4">
+        Home|Shopping cart
+    </div>
+
+    <h1 class="mt-4 ml-4">SHOPPING CART</h1>
+    <div class="cart">
+        <table id="serial" class="table  table-boardered mt-5 ml-4">
+
+            <!-- <tr class="mt-2">
+                <th class="d-flex mage"><img src="./images/thumbnail.jpg" alt="">
+                    <div class="d-flex del">
+                        <p>Automatic Pistol Parts</p>
+                        <button>delete</button>
+                    </div>
+                </th>
+                <th>
+                    <p>$400</p>
+                </th>
+                <th>
+                    <div class="d-flex bord">
+                        <p class="p-3 ">1</p>
+                        <div class="no">
+                            <p class="p-1">+</p>
+                            <p class="p-1">-</p>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <p>$400</p>
+                </th>
+            </tr> -->
+
+        </table>
+        <div class="order">
+
+        </div>
+    </div>
+    <div class="lot">
+        <div id="show" hidden></div>
+    </div>
+
+    <footer>
+        <div class="containers">
+            <div class="page">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingOne">
+                            <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Pages
+                            </button>
+                        </h4>
+                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body" style="background-color: white;">
+                                <ul style="text-align: left; margin-left:-30px !important">
+                                    <li><a href="">FIND A STORE</a></li>
+                                    <li><a href="">ABOUT</a></li>
+                                    <li><a href="">BLOG</a></li>
+                                    <li><a href="">SITE TERMS</a></li>
+                                    <li><a href="">PRIVACY</a></li>
+                                    <li><a href="">TERMS AND CONDITIONS</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cols-1">
+                <ul>
+                    <li><a href="">FIND A STORE</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="cols-1">
+                <ul>
+                    <li><a href="">SITE TERMS</a></li>
+                    <li><a href="">PRIVACY</a></li>
+                    <li><a href="">TERMS AND CONDITIONS</a></li>
+                </ul>
+            </div>
+            <div class="cols-2">
+                <p>SUSBCRIBE TO OUR EMAIL NEWSLETTER</p>
+                <div class="input">
+                    <input type="text" name="" id="input" placeholder="EMAIL ADDRESS">
+                    <a href=""><button class="btns">SUBMIT</button></a>
+                </div>
+                <div class="pt-4 i">
+                    <ul class="icons">
+                        <li><i class="fa-brands fa-facebook-f"></i></li>
+                        <li><i class="fa-brands fa-twitter"></i></li>
+                        <li><i class="fa-brands fa-youtube"></i></li>
+                        <li><i class="fa-brands fa-pinterest"></i></li>
+                        <li><i class="fa-brands fa-instagram"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<script src="./script.js"></script>
