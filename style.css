@@ -154,9 +154,171 @@ center h1{
     width: 100% !important;
 }
 
+
+
+/* footer */
+
 footer{
-    margin-top: 100px;
-    width: 100%;
-    height: 300px;
-    background-color: cornsilk;
+    background-color: #F1F1F1;
 }
+
+
+.containers{
+    width: 90% !important;
+    margin: auto;
+    height: fit-content;
+    background-color: #F1F1F1;
+    color: #7C7C7C;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns:1fr repeat(2, 2fr);
+}
+
+.cols-2{
+    text-align: end;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.cols-2 p{
+    padding-right: 45px;
+    font-size: 16px;
+}
+
+li{
+    list-style: none;
+    padding-top: 25px;
+}
+
+li a{
+    text-decoration: none;
+    color:#7C7C7C;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+.input{
+    display: flex;
+    justify-content: flex-end;
+}
+#input{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: none;
+    outline: none;
+    width: 60%;
+}
+
+#input::placeholder{
+    padding-left: 10px;
+    color:#7C7C7C;
+}
+
+.btns{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background-color: #5A7BB9;
+    color: #fff;
+    outline: none;
+    border: none;
+}
+
+.icons{
+    display: flex;
+    justify-content: right;
+}
+
+.fa-brands{
+    font-size: 25px;
+    color: #5A7BB9;
+    margin-right: 20px;
+}
+
+
+.page{
+    text-align: center;
+    padding-top: 30px;
+    display: none;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+
+.accordion-button{
+    width: 100%;
+}
+
+
+
+.accordion-body{
+    position: relative;
+    z-index: 1;
+}
+
+.accordion-button{
+    height: 40px;
+    border-radius: 0px !important;
+}
+
+.accordion-button::after{
+    color: white !important;
+    /* display: none; */
+}
+
+@media(max-width:860px){
+    .page{
+        display: inherit;
+    }
+
+    .containers{
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 100px);
+        text-align: center !important;
+        align-content: center;
+    }
+    .cols-1{
+        display: none;
+    }
+    .cols-2{
+        text-align: center;
+        padding-right: 0px !important;
+        width: 100%;
+    }
+    .cols-2 p{
+        text-align: center;
+        font-size: 15px;
+    }
+    .input{
+        justify-content: center;
+    }
+    .fa-brands{
+        margin-right: 0px;
+    }
+    .icons{
+        justify-content: center;
+        padding-left: 0px !important;
+    }
+    li{
+        padding: 10px;
+    }
+    .fa-brands{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:367px){
+    .cols-2 p{
+        text-align: left;
+        padding-left: 10px;
+    }
+}
+

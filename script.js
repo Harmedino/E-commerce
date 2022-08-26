@@ -49,6 +49,7 @@ function push() {
 //  LOGIN IN JAVASCRIPT
 let accName = '';
 function login() {
+    console.log('ewed');
     const nameInput = inputuser.value;
     const passWordInput = inputPassword.value
 
