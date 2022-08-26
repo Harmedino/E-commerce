@@ -97,7 +97,7 @@ header .log{
 main{
     width: 100%;
     height: 700px;
-    background-image: url('./images/background.jpg');
+    background-image: url('../images/background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

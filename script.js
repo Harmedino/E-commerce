@@ -88,9 +88,9 @@ function getLocal() {
 getLocal()
 
 let dist = false;
-let myar = [{ image: './images/thumbnail.jpg', detail: '100 YARD RIFLE SIGHT PRACTICE TARGET 12 PER PACKAGE', price: 400 },
+let myar = [{ image: '../images/thumbnail.jpg', detail: '100 YARD RIFLE SIGHT PRACTICE TARGET 12 PER PACKAGE', price: 400 },
 // { image: './images/shooting-target.jpg', detail: '100 YARD RIFLE SIGHT PRACTICE TARGET 12 PER PACKAGE', price: 700 },
-{ image: './images/shooting-target.jpg', detail: '100 YARD RIFLE ', price: 900 }];
+{ image: '../images/shooting-target.jpg', detail: '100 YARD RIFLE ', price: 900 }];
 
 let display2 = document.getElementById('show');
 
@@ -143,7 +143,7 @@ function send() {
 }
 
 
-console.log(myCart.length);
+console.log(myCart);
 function cartDisplay() {
     // let multy = document.getElementById('mul').innerHTML;
     serial.innerHTML = ""
@@ -186,9 +186,6 @@ function cartDisplay() {
     })
 }
 
-
-
-// console.log(mullly.innerHTML);
 cartDisplay()
 
 
