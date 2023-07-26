@@ -207,3 +207,60 @@ footer {
 .icons i:hover {
   color: #f7b731;
 }
+
+
+
+.nav-bar {
+  border: none;
+  background-color: transparent;
+}
+.nav-bar i {
+  display: none;
+}
+.navs{
+  width: 70%;
+
+}
+@media (max-width: 800px) {
+
+  .navs {
+    position: absolute;
+    height: 300px;
+    top: 50px;
+    right: 0px;
+    color: black;
+    background-color: #343A40;
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    z-index: 500 !important;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: all ease-in 0.5s;
+  }
+  .cart-account-collapse{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .dropdown{
+    margin-top: 10px;
+  }
+
+  .navbar-nav{
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-item{
+    margin-top: 10px;
+  }
+  
+  .nav-bar i {
+    color: white;
+    display: inherit;
+    margin-right: 30px;
+  }
+}
+.active {
+  transform: translateX(0%) !important;
+}

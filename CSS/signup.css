@@ -1,96 +1,83 @@
-body{
-    width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient( to bottom right, blue,blueviolet, coral, yellowgreen, yellow,indianred, red, purple, violet);
-    overflow-x: hidden;
-}
-.login{
-    width: 35%;
-    margin: auto;
-    margin-top: 100px !important;
-    min-height: 80vh;
-    background-color: rgb(7, 7, 27);
-    border-radius: 30px;
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column  ; */
-}
-.login .head{
-width: 100%;
-height: 100px;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-background-color: sienna;
-align-self: flex-start !important;
-display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column  ;
-    color: white;
-    letter-spacing: 1px;
-    font-weight: 600;
-    font-size: 22px;
-}
-section{
-    margin-top: 50px;
-    padding-bottom: 40px;
-    text-align: left;
-    padding-left: 40px;
-    /* width: 70%; */
-}
-label{
-    font-size: 20px;
-    font-weight: 600;
-    color: white;
-    font-family: monospace;
-    text-align: left;
-    letter-spacing: .7px;
-}
-input{
-    width: 70%;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    outline: 0;
-}
-span{
-    color: red;
-}
-button{
-    outline: 0;
-    padding: 15px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    font-family: monospace;
-    background-color: rgb(102, 100, 102);
-    text-transform: uppercase;
-    border: none;
-    border-radius: 10px;
-    margin-top: 30px;
-}
-button a{
-    color: white;
-    text-decoration: white;
-}
-button:hover{
-    background-color: rgb(133, 131, 133);
-}
-.error{
-    color: red;
-    letter-spacing: 1px;
-}
+/* Your custom CSS for the signup page */
 
-@media(max-width:860px){
-    .login{
-        width: 70%;
-    }
-}
-@media(max-width:530px){
-    .login{
-        width: 90%;
-    }
-}
+/* Set the background color */
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Center the signup div */
+  .login {
+    width: 50%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Add a hover effect to the signup div */
+  .login:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Style the section containing the form elements */
+  .login section {
+    margin-top: 20px;
+  }
+  
+  /* Style the labels and inputs */
+  .login label {
+    font-weight: bold;
+  }
+  
+  .login input {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style the sign-up button */
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Blue color for the button */
+    border: none;
+    border-radius: 4px;
+    color: #ffffff; /* White text color for the button */
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Optional: Add some margin to the "SIGN UP" heading */
+  .head h3 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Optional: Style the "Already have an account?" link */
+  .login p {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login p a {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none;
+  }
+  
+  .login p a:hover {
+    text-decoration: underline; /* Underline the link on hover */
+  }
+  

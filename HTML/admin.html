@@ -6,124 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
     <link rel="stylesheet" href="../CSS/admin.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+    crossorigin="anonymous"
+  />
   </head>
 
   <body>
-    <header class="">
-      <div class="main-part mt-5">
-        <div class="logo d-flex">
-          <img src="./images/logo.png" alt="" style="width: 20%" class="img" />
-          <h1>Harmedino</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+          <div class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="">Product Management</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#products">Products</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <!--  -->
-        <div class="list mt-4">
-          <a href="#">HANDGUNS</a>
-          <a href="#">MAGAZINES</a>
-          <a href="#">AMMO</a>
-          <a href="#">ACCESSORIES</a>
-        </div>
-      </div>
-      <div class="log">
-        <div class="account">
-          <a href="$"><i class="fa fa-user"></i>MY ACCOUNT</a> |
-          <a href="#" id="name">SIGN</a>
-          <a href="#"
-            ><i class="fa fa-cart"></i>
-            <span>(1)</span>
-          </a>
-        </div>
-        <div class="search">
-          <input type="text" placeholder="search text" />
-        </div>
-      </div>
-    </header>
-    <main>
-      <center>UPLOAD ITEM</center>
-      <div class="container">
-        <label for="">UPLOAD IMAGE</label> <br />
-        <input type="file" id="img" /> <br />
-
-        <label for="">AMOUNT</label> <br />
-        <input type="text" id="mount" /> <br />
-
-        <label for="text">DETAILS</label> <br />
-        <textarea name="" id="text" cols="30" rows="10"></textarea> <br />
-
-        <button onclick="post()">POST</button>
-      </div>
-    </main>
-    <footer>
-      <div class="containers">
-        <div class="page">
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h4 class="accordion-header" id="headingOne">
-                <button
-                  class="accordion-button bg-dark text-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  Pages
-                </button>
-              </h4>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body" style="background-color: white">
-                  <ul style="text-align: left; margin-left: -30px !important">
-                    <li><a href="">FIND A STORE</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="">BLOG</a></li>
-                    <li><a href="">SITE TERMS</a></li>
-                    <li><a href="">PRIVACY</a></li>
-                    <li><a href="">TERMS AND CONDITIONS</a></li>
-                  </ul>
-                </div>
+        <!-- Content Area -->
+        <div class="col-md-9">
+          <div class="content">
+            <h2>Product Management</h2>
+            <form class="product-form" id="formData">
+              <div class="form-group">
+                <label for="product-name">Product Name</label>
+                <input type="text" id="productName" name='product-name' class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="product-name">Product Image</label>
+                <input type="file" id="productImage" name="product-image"  class="form-control" >
+              </div>
+             
+              <div class="form-group">
+                <label for="product-price">Product Category</label>
+                <input type="text" id="productCategory" name="product-category" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="product-price">Product Price</label>
+                <input type="number" id="productPrice" name="product-price" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="product-description">Product Description</label>
+                <textarea id="product-description" class="form-control" name="productDescription" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+            <h3 id="products">Available Products</h3>
+            <div class="container mt-4 border">
+              <div class="row"  id="productDisplay" >
+            
               </div>
             </div>
           </div>
         </div>
-        <div class="cols-1">
-          <ul>
-            <li><a href="">FIND A STORE</a></li>
-            <li><a href="">ABOUT</a></li>
-            <li><a href="">BLOG</a></li>
-          </ul>
-        </div>
-        <div class="cols-1">
-          <ul>
-            <li><a href="">SITE TERMS</a></li>
-            <li><a href="">PRIVACY</a></li>
-            <li><a href="">TERMS AND CONDITIONS</a></li>
-          </ul>
-        </div>
-        <div class="cols-2">
-          <p>SUSBCRIBE TO OUR EMAIL NEWSLETTER</p>
-          <div class="input">
-            <input type="text" name="" id="input" placeholder="EMAIL ADDRESS" />
-            <a href=""><button class="btns">SUBMIT</button></a>
-          </div>
-          <div class="pt-4 i">
-            <ul class="icons">
-              <li><i class="fa-brands fa-facebook-f"></i></li>
-              <li><i class="fa-brands fa-twitter"></i></li>
-              <li><i class="fa-brands fa-youtube"></i></li>
-              <li><i class="fa-brands fa-pinterest"></i></li>
-              <li><i class="fa-brands fa-instagram"></i></li>
-            </ul>
-          </div>
-        </div>
       </div>
-    </footer>
-  </body>
+    </div>
 </html>
 <div id="show" hidden></div>
 <div id="serial" hidden></div>
 
-<script src="../script.js"></script>
+<script src="../script.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

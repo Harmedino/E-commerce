@@ -16,58 +16,63 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container">
-          <!-- Logo -->
-          <a href="./HOME.html" class="navbar-brand">Harmedino</a>
-    
-          <!-- Navbar Toggler (hamburger menu for medium and small screens) -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-    
-          <!-- Navbar Links (collapsible on medium and small screens) -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="./HOME.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./product.html">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-              </li>
-              <!-- Add more Navbar Links as needed -->
-            </ul>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <!-- Logo -->
+      <a href="./HOME.html" class="navbar-brand">Harmedino</a>
+
+      <!-- Navbar Toggler (hamburger menu for medium and small screens) -->
+      <div class="nav-bar" id="hamburger"><i class="fa fa-bars"></i></div>
+
+
+      <div class="d-flex justify-content-around align-items-center navs">
+        <div class="" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./HOME.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./product.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./aboutus.html">About Us</a>
+            </li>
+            <!-- Add more Navbar Links as needed  -->
+            
+          </ul>
+
+        </div>
+
+        <div class="header-cart-account cart-account-collapse ">
+          <div class="">
+            <a href="./cart.html" class="btn btn-light" id="cartLength" >
+              <i class="fa fa-shopping-cart"></i> Cart (0)
+            </a>
           </div>
-    
-          <!-- Cart Icon and Account Dropdown (will collapse on medium screens) -->
-          <div class="header-cart-account cart-account-collapse">
-            <div class="">
-              <a href="./cart.html" class="btn btn-light " id="cartLength" hidden>
-                <i class="fa fa-shopping-cart"></i> Cart (0)
-              </a>
-              
+          <div class="dropdown">
+            <a
+              href="#"
+              class="btn btn-light dropdown-toggle"
+              data-toggle="dropdown" 
+            >
+              <i class="fa fa-user"></i> My Account
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="./profile.html" id="profile">Profile</a>
+              <a class="dropdown-item" href="./admin.html" id="admin">Admin</a>
+              <a class="dropdown-item" href="../index.html" id="login">Login</a>
+              <a class="dropdown-item" href="./signup.html" id="register">Register</a>
+              <a class="dropdown-item" href="#" id="logout">LogOut</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" id="order">My Orders</a>
             </div>
-            <div class="dropdown">
-              <a href="#" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i> My Account
-              </a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <!-- Account options -->
-                <a class="dropdown-item" href="./profile.html" hidden id="profile">Profile</a>
-                <a class="dropdown-item" href="./index.html" hidden id="login">Login</a>
-                <a class="dropdown-item" href="./signup.html" hidden id="register">Register</a>
-                <a class="dropdown-item" href="#" hidden id="logout" >LogOut</a>
-                <div class="dropdown-divider"></div>
-                <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-              </div>
-            </div>
+          </div>
           </div>
         </div>
-      </nav>
+      </div>
+    </div>
+  </nav>
 
 
 
@@ -188,4 +193,4 @@
 <div id="grandTotal" hidden></div>
 </body>
 </html>
-<script src="../script.js"></script>
+<script src="../script.js" type="module"></script>
