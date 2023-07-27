@@ -63,13 +63,13 @@
               <i class="fa fa-user"></i> My Account
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="./profile.html" id="profile">Profile</a>
-              <a class="dropdown-item" href="./admin.html" id="admin">Admin</a>
-              <a class="dropdown-item" href="../index.html" id="login">Login</a>
-              <a class="dropdown-item" href="./signup.html" id="register">Register</a>
-              <a class="dropdown-item" href="#" id="logout">LogOut</a>
+              <a class="dropdown-item" href="./profile.html" id="profile" hidden>Profile</a>
+              <a class="dropdown-item" href="./admin.html" id="admin" hidden>Admin</a>
+              <a class="dropdown-item" href="./index.html" id="login" hidden>Login</a>
+              <a class="dropdown-item" href="./signup.html" id="register" hidden>Register</a>
+              <a class="dropdown-item" href="#" id="logout" hidden>LogOut</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" id="order">My Orders</a>
+              <a class="dropdown-item" href="#" id="order" hidden>My Orders</a>
             </div>
           </div>
         </div>
@@ -91,7 +91,11 @@
      <!-- Cart Display Page -->
      <div class="container mt-4">
       <h2>Your Cart</h2>
-  
+      <div class="text-center p-3 m-3" id="loadingSpinner">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       <div class="cart-item"  id="serial" >
       
       </div>

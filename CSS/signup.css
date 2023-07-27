@@ -56,9 +56,7 @@ body {
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
+
   
   /* Optional: Add some margin to the "SIGN UP" heading */
   .head h3 {

@@ -113,6 +113,10 @@ editInfo.addEventListener("click", async (event) => {
     const updatedData = {
       phoneNumber: phoneValue.value,
       address: address.value,
+      username: usernameValue.value,
+      email:userEmailValue.value,
+      firstName: firstnameValue.value,
+      lastName: lastnameValue.value
     };
 
     try {

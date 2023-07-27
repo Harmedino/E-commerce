@@ -14,6 +14,10 @@ let register = document.getElementById("register");
 let profile = document.getElementById("profile");
 let admin = document.getElementById("admin");
 let order = document.getElementById("order");
+let signupButton = document.getElementById("signupButton");
+let msg = document.getElementById("msg");
+let cartLength = document.querySelector("#cartLength");
+let grandTotal = document.getElementById("grandTotal");
 
 // nav bar
 try {
@@ -38,6 +42,9 @@ import {
   doc,
   setDoc,
   getDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import {
   getStorage,
@@ -132,11 +139,10 @@ try {
 } catch (error) {}
 
 // getting posted products
+const products = [];
 
 function displayProducts() {
   let productDisplay = document.getElementById("productDisplay");
-
-  const products = [];
 
   getDocs(colRef)
     .then((result) => {
@@ -196,6 +202,7 @@ try {
   // Event listener for form submission
   getData.addEventListener("submit", (event) => {
     event.preventDefault();
+    signupButton.disabled = true;
 
     const firstName = getData.firstName.value;
     const lastName = getData.lastName.value;
@@ -225,49 +232,53 @@ try {
           )
             .then(() => {
               console.log("User information stored successfully");
+              msg.innerHTML = "User information stored successfully";
               window.location.href = "./index.html";
-              // function getUserProfileData(userId)
             })
             .catch((error) => {
-              console.error("Error storing user information:", error);
+              msg.innerHTML = "Error registering user:" + error.message;
             });
         }
       })
       .catch((error) => {
-        console.error("Error registering user:", error);
+        msg.innerHTML = "Error registering user:" + error.message;
       });
+    signupButton.disabled = false;
   });
 } catch (error) {}
 
 // Login auth
+const loginUserData = document.getElementById("loginUserData");
 
 try {
-  loginUser.addEventListener("submit", (event) => {
+  loginUserData.addEventListener("submit", (event) => {
     event.preventDefault();
+    msg.disabled = true;
 
-    let userEmail = loginUser.userEmail.value;
-    let userPassword = loginUser.userPassword.value;
+    let userEmail = loginUserData.userEmail.value;
+    let userPassword = loginUserData.userPassword.value;
 
     signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
         const user = userCredential.user;
         const userId = user.uid;
 
-        window.location = "./HTML/HOME.html";
+        window.location = "./HOME.html";
       })
       .catch((error) => {
+        msg.innerHTML = error.message;
         console.log("unble to login", error);
       });
   });
 } catch (error) {}
 
 //  LOGIN IN JAVASCRIPT
+let uid;
 
 function getLoginUser() {
   onAuthStateChanged(auth, (user) => {
-    console.log(user);
     if (user) {
-      const uid = user.uid;
+      uid = user.uid;
 
       getUserProfileData(uid);
     } else {
@@ -287,6 +298,7 @@ function getUserProfileData(userId) {
       if (doc.exists) {
         userData = doc.data();
         console.log("User Profile Data:", userData);
+        cartLength.innerHTML = `Cart (${userData.cart.length})`;
         // Do something with the user data, e.g., display it on the page
         try {
           if (userData.admin) {
@@ -294,11 +306,23 @@ function getUserProfileData(userId) {
           }
         } catch (error) {}
       } else {
+        signOut(auth)
+          .then((result) => {
+            window.location = "./HOME.html";
+          })
+          .catch((err) => console.log("unable to logout"));
+
         console.log("User data not found.");
       }
     })
     .catch((error) => {
-      console.error("Error fetching user data:", error);
+      signOut(auth)
+        .then((result) => {
+          window.location = "./HOME.html";
+        })
+        .catch((err) => console.log("unable to logout"));
+
+      console.error("Error fetching user data:", err);
     });
 }
 
@@ -306,14 +330,14 @@ function getindex1() {
   onAuthStateChanged(auth, (user) => {
     try {
       if (!user) {
-        logout.hidden = true;
-        profile.hidden = true;
-        order.hidden = true;
-        admin.hidden = true;
+        login.hidden = false;
+        register.hidden = false;
+        
       } else {
-        login.hidden = true;
-        register.hidden = true;
-        admin.hidden = true;
+        
+        logout.hidden = false;
+        profile.hidden = false;
+        order.hidden = false;
       }
     } catch (error) {}
   });
@@ -321,17 +345,6 @@ function getindex1() {
 getindex1();
 
 // logout
-
-let logoutUser = document.getElementById("logout");
-
-try {
-  logoutUser.addEventListener("click", () => {
-    signOut(auth)
-      .then((result) => {})
-      .catch((err) => console.log("unable to logout"));
-    window.location = "./HOME.html";
-  });
-} catch (error) {}
 
 function getLocal() {
   let detail = localStorage.getItem("userDetails");
@@ -352,51 +365,35 @@ let store;
 
 try {
   show.addEventListener("click", (event) => {
-    // console.log(event.target.id)
     if (event.target.nodeName === "BUTTON") {
-      console.log(myar);
-      let id = event.target.id;
+      if (uid) {
+        let number = event.target.id;
+        console.log(products);
+        store = {
+          image1: products[number].result,
+          detail1: products[number].productDescription,
+          price1: products[number].productPrice,
+          total: products[number].productPrice,
+          quantity: 1,
+          id: products[number].id,
+        };
 
-      if (getindex !== "") {
-        if (details[getindex].cart.length === 0) {
-          console.log("first time");
-          let imageC = myar[id].result;
-          let detailC = myar[id].productName;
-          let priceC = myar[id].productPrice;
-          let quantity = 1;
-          store = {
-            image1: imageC,
-            detail1: detailC,
-            price1: priceC,
-            total: priceC,
-            quantity: quantity,
-          };
-          console.log(details[getindex].cart);
-        } else {
-          for (let i = 0; i < details[getindex].cart.length; i++) {
-            if (myar[id].productName === details[getindex].cart[i].detail1) {
-              alert("this item is already inside the cart");
-              return;
-            } else {
-              let imageC = myar[id].result;
-              let detailC = myar[id].productName;
-              let priceC = myar[id].productPrice;
-              let quantity = 1;
-              store = {
-                image1: imageC,
-                detail1: detailC,
-                price1: priceC,
-                total: priceC,
-                quantity: quantity,
-              };
-            }
-          }
-        }
+        const cartRef = doc(db, "users", uid);
+
+        updateDoc(cartRef, {
+          cart: arrayUnion(store),
+        })
+          .then((result) => {
+            console.log(userData.cart.length);
+            cartLength.innerHTML = `Cart (${cart.length})`;
+          })
+          .catch((err) => {
+            console.log("error updating cart");
+          });
       } else {
         alert("please login");
         window.location = "./index.html";
       }
-      send();
     }
   });
 } catch (error) {}
@@ -405,129 +402,203 @@ const orderNow = document.getElementById("orderNow");
 
 try {
   orderNow.addEventListener("click", () => {
-    if (getindex === "") {
+    if (uid) {
       alert("please login");
     }
   });
 } catch (error) {}
 
-let cartDisplayLength = document.querySelectorAll("#cartLength");
-if (getindex !== "") {
-  let cartLength = "";
-
-  cartDisplayLength.forEach((ele) => {
-    ele.hidden = false;
-    cartLength = ele;
-  });
-}
 const serial = document.getElementById("serial");
 
-function send() {
-  details[getindex].cart.push(store);
-  localStorage.setItem("userDetails", JSON.stringify(details));
-  cartLength.innerHTML = `Cart (${details[getindex].cart.length})`;
-}
-
-function getuser() {
-  let get4 = localStorage.getItem("userDetails");
-  if (get4) {
-    details = JSON.parse(get4);
-    if (getindex !== "") {
-      try {
-        if (details[getindex].cart.length !== 0) {
-          cartLength.innerHTML = `Cart (${details[getindex].cart.length})`;
-        }
-      } catch (error) {}
-    }
-    cartDisplay();
-  } else {
-  }
-}
-getuser();
-
 // cart javascript
+let cart;
 
 function cartDisplay() {
-  if (getindex !== "") {
-    try {
-      if (details[getindex].cart.length !== 0) {
-        serial.innerHTML = "";
-        details[getindex].cart.forEach((ele, i) => {
-          let totl = Number(ele.total);
-          serial.innerHTML += `
-        <div class="row align-items-center w-100 justify-content-around">
-          <div class="col-md-3">
-            <img src="${ele.image1}" alt="Product ${i}" style="width: 40%;>
-          </div>
-          <div class="col-md-6 cart-item-info">
-            <div class="cart-item-title">${ele.detail1}</div>
-           
-          </div>
-          <div class="cart-item-price">$${ele.price1}</div>
-          <div class="cart-item-price">$${totl} </div>
-          <div class="col-md-3 text-right cart-item-quantity">
-            <button class="btn btn-secondary btn-sm quantity-decrease"  id="${i}" >-</button>
-            <p class='border p-2 m-2'>${ele.quantity}</p> 
-            <button class="btn btn-secondary btn-sm quantity-increase" id="${i}" >+</button>
-            <button class="btn btn-danger btn-sm ml-2" id="${i}">Remove</button>
-          </div>
-        </div>
-        <hr>
-        `;
-        });
-      } else {
-        serial.innerHTML = "";
-        // grandTotal.innerHTML = `Total: $00:00`;
-        getuser();
-        // alert()
-      }
-    } catch (error) {}
-  }
-  grand();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      uid = user.uid;
+      const docRef = doc(db, "users", uid);
+
+      getDoc(docRef).then((result) => {
+        const usercart = result.data();
+        cart = usercart.cart;
+        try {
+          loadingSpinner.style.display = "none";
+        } catch (err) {}
+
+        try {
+          if (cart.length !== 0) {
+            serial.innerHTML = "";
+            cart.forEach((ele, i) => {
+              let totl = Number(ele.total);
+              serial.innerHTML += `
+            <div class="row align-items-center w-100 justify-content-around">
+              <div class="col-md-3">
+                <img src="${ele.image1}" alt="Product ${i}" style="width: 40%;>
+              </div>
+              <div class="col-md-6 cart-item-info">
+                <div class="cart-item-title">${ele.detail1}</div>
+               
+              </div>
+              <div class="cart-item-price">$${ele.price1}</div>
+              <div class="cart-item-price">$${totl} </div>
+              <div class="col-md-3 text-right cart-item-quantity">
+                <button class="btn btn-secondary btn-sm quantity-decrease"  id="${i}" >-</button>
+                <input value="${ele.quantity}" min='1' disabled style="width:50px;" class="p-2 mr-2 ml-2 text-center"/>
+                <button class="btn btn-secondary btn-sm quantity-increase" id="${i}" >+</button>
+                <button class="btn btn-danger btn-sm ml-2" id="${i}">Remove</button>
+              </div>
+            </div>
+            <hr>
+            `;
+            });
+          } else {
+            serial.innerHTML = "NO ITEMS INSIDE THE CART";
+          }
+        } catch (error) {}
+        cartLength.innerHTML = `Cart (${cart.length})`;
+        grand();
+      });
+    } else {
+    }
+  });
 }
+
 cartDisplay();
+
+function displaying() {
+  try {
+    if (cart.length !== 0) {
+      serial.innerHTML = "";
+      cart.map((ele, i) => {
+        let totl = Number(ele.total);
+
+        serial.innerHTML += `
+      <div class="row align-items-center w-100 justify-content-around">
+        <div class="col-md-3">
+          <img src="${ele.image1}" alt="Product ${i}" style="width: 40%;>
+        </div>
+        <div class="col-md-6 cart-item-info">
+          <div class="cart-item-title">${ele.detail1}</div>
+         
+        </div>
+        <div class="cart-item-price">$${ele.price1}</div>
+        <div class="cart-item-price">$${totl} </div>
+        <div class="col-md-3 text-right cart-item-quantity">
+          <button class="btn btn-secondary btn-sm quantity-decrease"  id="${i}" >-</button>
+          <input value="${ele.quantity}" min='1' disabled style="width:50px;" class="p-2 mr-2 ml-2 text-center"/>
+          
+          <button class="btn btn-secondary btn-sm quantity-increase" id="${i}" >+</button>
+          <button class="btn btn-danger btn-sm ml-2" id="${i}">Remove</button>
+        </div>
+      </div>
+      <hr>
+      `;
+      });
+      console.log("here");
+    } else {
+      serial.innerHTML = "NO ITEMS INSIDE THE CART";
+    }
+  } catch (error) {}
+}
 
 try {
   serial.addEventListener("click", (event) => {
     let id = event.target.id;
+    const update = cart[id];
+    let total = [];
 
     if (event.target.textContent === "Remove") {
-      details[getindex].cart.splice(id, 1);
+      const cartRef = doc(db, "users", uid);
 
-      localStorage.setItem("userDetails", JSON.stringify(details));
-      getuser();
-      grand();
-    } else if (event.target.textContent === "+") {
-      let newQuantity = ++details[getindex].cart[id].quantity;
-      details[getindex].cart[id].total =
-        details[getindex].cart[id].price1 * newQuantity;
-      localStorage.setItem("userDetails", JSON.stringify(details));
+      updateDoc(cartRef, {
+        cart: arrayRemove(update),
+      });
       cartDisplay();
 
-      grand();
-    } else if (event.target.textContent === "-") {
-      let newQuantity = --details[getindex].cart[id].quantity;
-      if (newQuantity > 0) {
-        details[getindex].cart[id].total =
-          details[getindex].cart[id].price1 * newQuantity;
-        localStorage.setItem("userDetails", JSON.stringify(details));
-        cartDisplay();
-        grand();
-      } else {
-        details[getindex].cart.splice(id, 1);
+      // grand();
+    } else if (event.target.textContent === "+") {
+      let newQuantity = ++update.quantity;
+      update.total = update.price1 * newQuantity;
 
-        localStorage.setItem("userDetails", JSON.stringify(details));
-        getuser();
-        grand();
+      for (let i = 0; cart.length > i; i++) {
+        if (cart[i].id === update.id) {
+          cart[id] = update;
+        }
+        total.push(cart[i].total);
+        let grand = total.reduce((acc, cur) => acc + cur);
+        grandTotal.innerHTML = `Total: $${grand}.00`;
+        displaying();
+      }
+
+      // grand();
+    } else if (event.target.textContent === "-") {
+      let newQuantity = --update.quantity;
+
+      if (newQuantity >= 1) {
+        update.total = update.price1 * newQuantity;
+
+        for (let i = 0; cart.length > i; i++) {
+          if (cart[i].id === update.id) {
+            cart[id] = update;
+          }
+          total.push(cart[i].total);
+          let grand = total.reduce((acc, cur) => acc + cur);
+          grandTotal.innerHTML = `Total: $${grand.toFixed(2)}`;
+          displaying();
+        }
+      } else {
+        newQuantity = 1;
+        // alert()
+        return;
       }
     } else {
       return;
     }
+
+    setTimeout(async () => {
+      const userRef = doc(db, "users", uid);
+      const update = {
+        cart,
+      };
+      console.log(update);
+      try {
+        await updateDoc(userRef, update, { merge: true });
+        console.log("User information stored successfully");
+      } catch (error) {
+        console.error("Error storing user information:", error);
+      }
+    }, 5000);
   });
 } catch (error) {}
 
 function grand() {
-  let grandTotal = document.getElementById("grandTotal");
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      uid = user.uid;
+      const docRef = doc(db, "users", uid);
+
+      getDoc(docRef)
+        .then((result) => {
+          const usercart = result.data();
+          const cart = usercart.cart;
+          console.log(cart);
+          let gra = cart
+            .map((ele, i) => {
+              return Number(ele.total);
+            })
+            .reduce((acc, tot) => {
+              return acc + tot;
+            });
+
+          grandTotal.innerHTML = `Total: $${gra.toFixed(2)}`;
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+    }
+  });
 
   try {
     if (getindex !== "") {
@@ -539,7 +610,6 @@ function grand() {
           .reduce((acc, tot) => {
             return acc + tot;
           });
-        grandTotal.innerHTML = `Total: $${gra.toFixed(2)}`;
       } else {
         grandTotal.innerHTML = `Total: $${total.toFixed(2)}`;
         return;
@@ -598,7 +668,6 @@ try {
 try {
   sortFoods.addEventListener("click", (event) => {
     let sort = event.target.textContent.trim();
-    console.log(sort);
 
     let display2 = document.getElementById("show");
     myar = [];
@@ -611,7 +680,9 @@ try {
       if (sort === "All") {
         display();
       } else {
-        let newAr = myar.filter((ele) => ele.productCategory === sort);
+        let reg = new RegExp(sort, "i");
+        let newAr = myar.filter((ele) => reg.test(ele.productCategory));
+
         try {
           display2.innerHTML = "";
 
@@ -664,6 +735,7 @@ function display() {
           `;
         });
       } catch (error) {
+        display2.innerHTML = error.mesage;
         console.log(error.message);
       }
     })
@@ -671,3 +743,15 @@ function display() {
       console.log(err.message);
     });
 }
+
+// LOGOUT FUNCTION
+let logoutUser = document.getElementById("logout");
+
+try {
+  logoutUser.addEventListener("click", () => {
+    signOut(auth)
+      .then((result) => {})
+      .catch((err) => console.log("unable to logout"));
+    window.location = "./HOME.html";
+  });
+} catch (error) {}
