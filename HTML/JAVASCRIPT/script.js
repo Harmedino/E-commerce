@@ -14,7 +14,6 @@ let register = document.getElementById("register");
 let profile = document.getElementById("profile");
 let admin = document.getElementById("admin");
 let order = document.getElementById("order");
-let signupButton = document.getElementById("signupButton");
 let msg = document.getElementById("msg");
 let cartLength = document.querySelector("#cartLength");
 let grandTotal = document.getElementById("grandTotal");
@@ -203,6 +202,7 @@ try {
   getData.addEventListener("submit", (event) => {
     event.preventDefault();
     signupButton.disabled = true;
+    signupButton.textContent = 'Registering...'
 
     const firstName = getData.firstName.value;
     const lastName = getData.lastName.value;
@@ -213,7 +213,6 @@ try {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
-        console.log("User registered:", user.email);
 
         if (user) {
           // const userId = user.uid
@@ -231,19 +230,24 @@ try {
             { merge: true }
           )
             .then(() => {
-              console.log("User information stored successfully");
-              msg.innerHTML = "User information stored successfully";
-              window.location.href = "./index.html";
+              window.location = "./index.html";
             })
             .catch((error) => {
               msg.innerHTML = "Error registering user:" + error.message;
+              setTimeout(() => {
+                msg.innerHTML= ''
+              }, 3000);
             });
         }
       })
       .catch((error) => {
         msg.innerHTML = "Error registering user:" + error.message;
+        setTimeout(() => {
+          msg.innerHTML= ''
+        }, 3000);
       });
     signupButton.disabled = false;
+    signupButton.textContent = 'Register'
   });
 } catch (error) {}
 
@@ -265,6 +269,7 @@ try {
         const userId = user.uid;
 
         window.location = "./HOME.html";
+        getLoginUser();
       })
       .catch((error) => {
         msg.innerHTML = error.message;
@@ -314,7 +319,7 @@ function getUserProfileData(userId) {
       } else {
         signOut(auth)
           .then((result) => {
-            window.location = "./HOME.html";
+            window.location = "./index.html";
           })
           .catch((err) => console.log("unable to logout"));
 
@@ -324,7 +329,7 @@ function getUserProfileData(userId) {
     .catch((error) => {
       signOut(auth)
         .then((result) => {
-          window.location = "./HOME.html";
+          window.location = "./index.html";
         })
         .catch((err) => console.log("unable to logout"));
 
@@ -758,6 +763,6 @@ try {
     signOut(auth)
       .then((result) => {})
       .catch((err) => console.log("unable to logout"));
-    window.location = "./HOME.html";
+    window.location = "./index.html";
   });
 } catch (error) {}
