@@ -33,6 +33,9 @@ nav {
   background-color: crimson;
   height: 90px;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 }
 nav label {
   font-size: 40px;
@@ -61,36 +64,23 @@ nav .navs {
   margin-left: 10px;
 }
 
-.hero {
-  margin-top: 40px;
-  height: 70vh !important;
-}
-.hero-body {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: space-around;
-  align-items: center;
-}
-.hero .contain {
-  width: 100%;
-  height: 100%;
-}
-.hero-body .image {
-  width: 50%;
-  /* height: 45vh ; */
-}
-.hero-body .cont {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
 
+.hero-section{
+  /* background-color: crimson; */
+  color: white;
+  margin-top: 130px;
+  height: 80vh;
+  background-image: url('https://img.freepik.com/free-photo/front-view-young-woman-apron-making-okey-sign_140725-108851.jpg?w=2000');
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  color: crimson;
+  column-gap: 10px;
+}
 .section-container {
   padding: 100px 0;
   text-align: center;
+  
 }
 
 .section-title {
@@ -246,11 +236,13 @@ footer {
   .navs {
     position: fixed;
     width: 100% !important;
-    height: 80vh;
+    height: 100vh;
     background-color: crimson;
     top: 90px;
     left: -100%;
     text-align: center;
+    transition: all ease-in 0.5s;
+    z-index: 1000;
   }
   #navs{
     flex-direction: column;
@@ -278,7 +270,9 @@ footer {
 
   nav .navs.show{
     left: 0 !important;
+   
   }
+
 }
 
 @media (max-width: 860px) {
@@ -321,11 +315,11 @@ footer {
   .fa-brands {
     font-size: 20px;
   }
-}
-
-@media (max-width: 367px) {
-  .cols-2 p {
-    text-align: left;
-    padding-left: 10px;
+  .hero-section h1{
+    font-size: 22px;
+    width: 80% !important;
+  }
+  .hero-section p{
+    font-size: 20px;
   }
 }

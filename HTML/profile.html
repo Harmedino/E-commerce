@@ -21,61 +21,59 @@
     
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="container">
-        <!-- Logo -->
-        <a href="./HOME.html" class="navbar-brand">Harmedino</a>
+    <nav class=" d-flex justify-content-around align-items-center">
+  
+      <!-- Logo -->
+      <label for="logo">  <a href="./HOME.html" class="text-light">Harmedino</a></label>
+     
+      <div class="text-light" id="hamburger"><i class="fa fa-bars"></i></div>
 
-        <!-- Navbar Toggler (hamburger menu for medium and small screens) -->
-        <div class="nav-bar" id="hamburger"><i class="fa fa-bars"></i></div>
 
+      <div class="navs d-flex justify-content-around align-items-center " id="navs">
+        <div class="" id="navbarNav">
+          <ul class=" d-flex justify-content-around align-items-center text-light">
+            <li class="nav-item">
+              <a class="nav-link" href="./HOME.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./product.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./aboutus.html">About Us</a>
+            </li>
+            <!-- Add more Navbar Links as needed  -->
+            
+          </ul>
 
-        <div class="d-flex justify-content-around align-items-center navs">
-          <div class="" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="./HOME.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./product.html">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./aboutus.html">About Us</a>
-              </li>
-              <!-- Add more Navbar Links as needed  -->
-              
-            </ul>
+        </div>
 
+        <div class="d-flex justify-content-around align-items-center cart">
+          <div class="carting">
+            <a href="./cart.html" class="btn btn-light" id="cartLength" >
+              <i class="fa fa-shopping-cart"></i> Cart (0)
+            </a>
           </div>
-
-          <div class="header-cart-account cart-account-collapse ">
-            <div class="">
-              <a href="./cart.html" class="btn btn-light" id="cartLength" >
-                <i class="fa fa-shopping-cart"></i> Cart (0)
-              </a>
+          <div class="dropdown ml-5">
+            <a
+              href="#"
+              class="btn btn-light dropdown-toggle"
+              data-toggle="dropdown" 
+            >
+              <i class="fa fa-user"></i> My Account
+            </a>
+            <div class="dropdown-menu dropdown-menu-right w-100">
+              <a class="dropdown-item" href="./profile.html" id="profile" hidden>Profile</a>
+              <a class="dropdown-item" href="./admin.html" id="admin" hidden>Admin</a>
+              <a class="dropdown-item" href="./index.html" id="login" hidden>Login</a>
+              <a class="dropdown-item" href="./signup.html" id="register" hidden>Register</a>
+              <a class="dropdown-item" href="#" id="logout" hidden>LogOut</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" id="order" hidden>My Orders</a>
             </div>
-            <div class="dropdown">
-              <a
-                href="#"
-                class="btn btn-light dropdown-toggle"
-                data-toggle="dropdown" 
-              >
-                <i class="fa fa-user"></i> My Account
-              </a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="./profile.html" id="profile" hidden>Profile</a>
-                <a class="dropdown-item" href="./admin.html" id="admin" hidden>Admin</a>
-                <a class="dropdown-item" href="./index.html" id="login" hidden>Login</a>
-                <a class="dropdown-item" href="./signup.html" id="register" hidden>Register</a>
-                <a class="dropdown-item" href="#" id="logout" hidden>LogOut</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" id="order" hidden>My Orders</a>
-              </div>
-              </div>
-          </div>
         </div>
       </div>
-    </nav>
+    
+  </nav>
 
     <div class="text-center p-5 m-5" id="loadingSpinner">
       <div class="spinner-border text-primary" role="status">
