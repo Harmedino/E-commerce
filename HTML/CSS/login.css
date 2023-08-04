@@ -57,9 +57,7 @@ body {
   cursor: pointer;
 }
 
-#loginUserBtn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
+
 
 /* Optional: Add some margin to the "SIGN IN" heading */
 .head h3 {
@@ -80,4 +78,17 @@ body {
 
 .login p a:hover {
   text-decoration: underline; /* Underline the link on hover */
+}
+
+@media(max-width:780px){
+  .login {
+    width: 70%;
+    min-height: 60vh;
+  }
+}
+@media(max-width:580px){
+  .login {
+    width: 90%;
+    min-height: 60vh;
+  }
 }

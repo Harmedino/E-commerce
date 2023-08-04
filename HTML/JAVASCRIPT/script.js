@@ -253,7 +253,8 @@ const loginUserData = document.getElementById("loginUserData");
 try {
   loginUserData.addEventListener("submit", (event) => {
     event.preventDefault();
-    msg.disabled = true;
+    loginUserBtn.disabled = true;
+    loginUserBtn.textContent = 'signing in...';
 
     let userEmail = loginUserData.userEmail.value;
     let userPassword = loginUserData.userPassword.value;
@@ -267,8 +268,13 @@ try {
       })
       .catch((error) => {
         msg.innerHTML = error.message;
-        console.log("unble to login", error);
+        setTimeout(() => {
+          msg.innerHTML = ''
+        }, 3000);
+        
       });
+    loginUserBtn.disabled = false;
+    loginUserBtn.textContent = 'sign in';
   });
 } catch (error) {}
 
