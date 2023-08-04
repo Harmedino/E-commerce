@@ -20,11 +20,13 @@ let grandTotal = document.getElementById("grandTotal");
 
 // nav bar
 try {
-  let showt = document.querySelector(".navs");
+  let showt = document.querySelector("#navs");
 
   hamburger.addEventListener("click", show);
+
   function show() {
-    showt.classList.toggle("active");
+    // alert()
+    showt.classList.toggle("show");
   }
 } catch (error) {}
 
