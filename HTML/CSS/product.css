@@ -36,6 +36,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 1000;
+  box-shadow:  2px 1px 9px #000000;
 }
 nav label {
   font-size: 40px;
@@ -165,11 +166,6 @@ nav .navs {
     transition: background-color 0.3s ease;
   }
 
-  .btn-add-to-cart:hover {
-    background-color:#e49a12 !important;
-    color:#9995E0
-  }
-
 
   .hero-section {
     background-image: url('https://img.freepik.com/premium-photo/woman-chef-cooking-healthy-food-fresh-vegetables-ingredients-cooking-meal-gourmet-main-dish-recipes-cooking-is-her-hobby-girl-hat-apron-delicious-recipe-concept-cooking-healthy-food_474717-90740.jpg?w=900'); 
@@ -209,8 +205,7 @@ nav .navs {
   }
 
   .hero-btn:hover {
-    background-color: #e6a425;
-    color:w#9995E0
+    color:#ffffff !important;
   }
 
   
@@ -241,9 +236,7 @@ footer {
     transition: color 0.3s ease;
   }
   
-  .footer-cols ul li a:hover {
-    color: #f7b731;
-  }
+
   
   .footer-cols input {
     width: 100%;
@@ -262,9 +255,7 @@ footer {
     transition: background-color 0.3s ease;
   }
   
-  .footer-cols .btns:hover {
-    background-color: #e6a425;
-  }
+
   
   .icons li {
     display: inline-block;
@@ -280,10 +271,7 @@ footer {
     color: #fff;
     transition: color 0.3s ease;
   }
-  
-  .icons i:hover {
-    color: #f7b731;
-  }
+
 
 
   
@@ -318,7 +306,7 @@ footer {
   }
   #navbarNav ul{
     flex-direction: column;
-    font-size: 42px;
+    font-size: 32px;
     font-weight: bolder;
   }
   #navbarNav ul li{
@@ -326,15 +314,15 @@ footer {
 
   }
   .cart{
-    margin-top: -130px;
+    margin-top: -230px;
     width: 100%;
     margin: auto;
  
     height: 170px;
   }
   .carting a, .dropdown a{
-    padding: 20px !important;
-    font-size: 34px;
+    padding: 10px !important;
+    font-size: 24px;
   }
 
   nav .navs.show{
@@ -342,4 +330,11 @@ footer {
    
   }
 
+}
+
+
+@media (max-width: 488px) {
+  nav label {
+    font-size: 24px;
+  }
 }

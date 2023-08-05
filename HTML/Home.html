@@ -17,21 +17,20 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
   </head>
 
-  <body class="bg-secondary" >
+  <body  >
 
       <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="container">
+    <nav class=" d-flex justify-content-around align-items-center">
+  
         <!-- Logo -->
-        <a href="./HOME.html" class="navbar-brand">Harmedino</a>
+        <label for="logo">  <a href="./HOME.html" class="text-light">Harmedino</a></label>
+       
+        <div class="text-light" id="hamburger"><i class="fa fa-bars"></i></div>
 
-        <!-- Navbar Toggler (hamburger menu for medium and small screens) -->
-        <div class="nav-bar" id="hamburger"><i class="fa fa-bars"></i></div>
 
-
-        <div class="d-flex justify-content-around align-items-center navs">
+        <div class="navs d-flex justify-content-around align-items-center " id="navs">
           <div class="" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class=" d-flex justify-content-around align-items-center text-light">
               <li class="nav-item">
                 <a class="nav-link" href="./HOME.html">Home</a>
               </li>
@@ -47,13 +46,13 @@
 
           </div>
 
-          <div class="header-cart-account cart-account-collapse ">
-            <div class="">
+          <div class="d-flex justify-content-around align-items-center cart">
+            <div class="carting">
               <a href="./cart.html" class="btn btn-light" id="cartLength" >
                 <i class="fa fa-shopping-cart"></i> Cart (0)
               </a>
             </div>
-            <div class="dropdown">
+            <div class="dropdown ml-5">
               <a
                 href="#"
                 class="btn btn-light dropdown-toggle"
@@ -61,7 +60,7 @@
               >
                 <i class="fa fa-user"></i> My Account
               </a>
-              <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-menu dropdown-menu-right w-100">
                 <a class="dropdown-item" href="./profile.html" id="profile" hidden>Profile</a>
                 <a class="dropdown-item" href="./admin.html" id="admin" hidden>Admin</a>
                 <a class="dropdown-item" href="./index.html" id="login" hidden>Login</a>
@@ -72,61 +71,44 @@
               </div>
           </div>
         </div>
-      </div>
+      
     </nav>
+    
 
-  
-    <section class="hero ">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <!-- Hero Image -->
-            <img src="https://img.freepik.com/free-photo/front-view-young-woman-apron-making-okey-sign_140725-108851.jpg?w=2000" alt="Delicious Food" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <!-- Hero Content -->
-            <div class="hero-content">
-              <h1 class="display-4">Delicious and Healthy Meals</h1>
-              <p class="lead">Discover a wide range of fresh, organic foods that will delight your taste buds.</p>
-              <a href="" class="btn btn-primary btn-lg" id="orderNow">Order Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <div class="hero-section mt-5 bg-light shadow rounded p-5" style=" padding: 10px 0; text-align: center;">
-      <h1 style="font-size: 48px; font-weight: bold;">Welcome to Our E-commerce Store</h1>
-      <p style="font-size: 20px; color: #666;">Explore a wide range of high-quality products that will delight your senses and enhance your everyday life.</p>
+
+    <div class="hero-section mt-5  shadow rounded  d-flex justify-content-around align-items-center " style=" text-align: center;">
+      <h1 style="font-size: 48px; font-weight: bold;" class="w-75 hero-text">Welcome to Our E-commerce Store</h1>
+      <p style="font-size: 30px; " class="w-50 hero-text">Explore a wide range of high-quality products that will delight your senses and enhance your everyday life.</p>
       
     </div>
  
-    <div class="section-container bg-light shadow rounded p-5" id="ecommerce-section">
-      <div class="container bg-light shadow rounded p-5">
-        <h2 class="section-title">Featured Products</h2>
+    <div class="section-container  shadow rounded md-p-5" id="ecommerce-section" style="background-color: crimson;">
+      <div class="container-sm shadow rounded pt-4" style="background-color: rgb(245, 241, 241); color: white;">
+        <h2 class="section-title" style="color: crimson;">Featured Products</h2>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://thumbs.dreamstime.com/b/burger-french-fries-basket-tartan-tablecloth-ketchup-mustard-bottle-background-close-up-135319836.jpg" alt="Product 1">
               <div class="product-title">Delicious Burger</div>
               <p class="product-description">A mouthwatering burger with all the classic toppings.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-paneer.4ef45717e972cf45b43c010e3cde5a22.1.jpg?width=550" alt="Product 2">
               <div class="product-title">Cheesy Pizza</div>
               <p class="product-description">A cheesy pizza with your favorite toppings.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://www.healthygreenkitchen.com/wp-content/uploads/2022/02/healthy-quinoa-chicken-salad-bowl.jpg" alt="Product 3">
               <div class="product-title">Refreshing Salad</div>
               <p class="product-description">A fresh and healthy salad to keep you energized.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://img.freepik.com/premium-photo/tasty-sushi-rolls-set-with-sauces-chopsticks-ginger-table-delivery-service-japanese-food_73558-5059.jpg?w=2000" alt="Product 4">
               <div class="product-title">Tasty Sushi</div>
@@ -134,28 +116,28 @@
             </div>
           </div>
       
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://thumbs.dreamstime.com/b/neapolitan-ice-cream-15779155.jpg" alt="Product 5">
               <div class="product-title">Deluxe Ice Cream</div>
               <p class="product-description">Indulge in the creamiest ice cream flavors.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://media.istockphoto.com/id/505168330/photo/cup-of-cafe-latte-with-coffee-beans-and-cinnamon-sticks.jpg?s=612x612&w=0&k=20&c=h7v8kAfWOpRapv6hrDwmmB54DqrGQWxlhP_mTeqTQPA=" alt="Product 6">
               <div class="product-title">Gourmet Coffee</div>
               <p class="product-description">Savor the rich flavors of our handcrafted coffee blends.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://kidsactivitiesblog.com/wp-content/uploads/2020/11/Healthy-Smoothie-Set-3-Final-H-scaled.jpg" alt="Product 7">
               <div class="product-title">Healthy Smoothie</div>
               <p class="product-description">Boost your day with a nutritious and delicious smoothie.</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
             <div class="product-card">
               <img src="https://t3.ftcdn.net/jpg/00/65/22/68/360_F_65226866_y22aq14aAgygvpJHZwwZGFhiE4jDQKrF.jpg" alt="Product 8">
               <div class="product-title">Delightful Cupcake</div>
@@ -168,8 +150,10 @@
     </div>
 
 
-    <section id="customer-reviews" class="mt-5 container">
-      <h2 class="text-center mb-4">Customer Reviews</h2>
+    <section id="customer-reviews" class="mt-5" style="background-color: crimson;" >
+
+      <div class="container">
+      <h2 class="text-center mb-4 text-light pt-5 pb-5" >Customer Reviews</h2>
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4">
@@ -242,13 +226,15 @@
           </div>
         </div>
       </div>
+    </div>
     </section>
     
-    <section id="contact" class="mt-5 mb-5 container">
+    <section id="contact" class="mt-5 mb-5 p-5" style="background-color: crimson;">
+      <div class="container">
       <div class="row">
         <div class="col-lg-6 mx-auto">
-          <h2 class="text-center mb-4">Contact Us</h2>
-          <form>
+          <h2 class="text-center mb-4 text-light">Contact Us</h2>
+          <form class="text-light">
             <div class="mb-3">
               <label for="name" class="form-label">Your Name</label>
               <input type="text" class="form-control" id="name" required>
@@ -262,23 +248,26 @@
               <textarea class="form-control" id="message" rows="5" required></textarea>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">Send Message</button>
+              <button type="submit" class="btn btn-light" style="color: crimson; font-size: 20px;" >Send Message</button>
             </div>
           </form>
         </div>
       </div>
+    </div>
     </section>
-    <footer>
+    <footer style="background-color: crimson;">
       <div class="container">
         <div class="footer-cols">
           <!-- Pages Accordion -->
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h4 class="accordion-header" id="headingOne">
-                <button class="accordion-button bg-dark text-light" type="button" data-bs-toggle="collapse"
+                <!-- <button class="accordion-button bg-light text-light" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Pages
-                </button>
+                </button> -->
+                <label for="logo">  <a href="./HOME.html" class="text-light">Harmedino</a></label>
+
               </h4>
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample">

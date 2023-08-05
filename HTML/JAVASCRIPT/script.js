@@ -204,7 +204,7 @@ try {
   getData.addEventListener("submit", (event) => {
     event.preventDefault();
     signupButton.disabled = true;
-    signupButton.textContent = 'Registering...'
+    signupButton.textContent = "Registering...";
 
     const firstName = getData.firstName.value;
     const lastName = getData.lastName.value;
@@ -237,7 +237,7 @@ try {
             .catch((error) => {
               msg.innerHTML = "Error registering user:" + error.message;
               setTimeout(() => {
-                msg.innerHTML= ''
+                msg.innerHTML = "";
               }, 3000);
             });
         }
@@ -245,11 +245,11 @@ try {
       .catch((error) => {
         msg.innerHTML = "Error registering user:" + error.message;
         setTimeout(() => {
-          msg.innerHTML= ''
+          msg.innerHTML = "";
         }, 3000);
       });
     signupButton.disabled = false;
-    signupButton.textContent = 'Register'
+    signupButton.textContent = "Register";
   });
 } catch (error) {}
 
@@ -260,7 +260,7 @@ try {
   loginUserData.addEventListener("submit", (event) => {
     event.preventDefault();
     loginUserBtn.disabled = true;
-    loginUserBtn.textContent = 'signing in...';
+    loginUserBtn.textContent = "signing in...";
 
     let userEmail = loginUserData.userEmail.value;
     let userPassword = loginUserData.userPassword.value;
@@ -276,12 +276,11 @@ try {
       .catch((error) => {
         msg.innerHTML = error.message;
         setTimeout(() => {
-          msg.innerHTML = ''
+          msg.innerHTML = "";
         }, 3000);
-        
       });
     loginUserBtn.disabled = false;
-    loginUserBtn.textContent = 'sign in';
+    loginUserBtn.textContent = "sign in";
   });
 } catch (error) {}
 
@@ -302,9 +301,8 @@ let userData;
 getLoginUser();
 
 function getUserProfileData(userId) {
-  // const userRef = db.collection("users").doc(userId);
   const docRef = doc(db, "users", userId);
-  console.log(userId);
+
 
   getDoc(docRef)
     .then((doc) => {
@@ -312,7 +310,6 @@ function getUserProfileData(userId) {
         userData = doc.data();
         console.log("User Profile Data:", userData);
         cartLength.innerHTML = `Cart (${userData.cart.length})`;
-        // Do something with the user data, e.g., display it on the page
         try {
           if (userData.admin) {
             admin.hidden = false;
@@ -345,9 +342,7 @@ function getindex1() {
       if (!user) {
         login.hidden = false;
         register.hidden = false;
-        
       } else {
-        
         logout.hidden = false;
         profile.hidden = false;
         order.hidden = false;
@@ -381,7 +376,6 @@ try {
     if (event.target.nodeName === "BUTTON") {
       if (uid) {
         let number = event.target.id;
-        console.log(products);
         store = {
           image1: products[number].result,
           detail1: products[number].productDescription,
@@ -397,8 +391,11 @@ try {
           cart: arrayUnion(store),
         })
           .then((result) => {
-            console.log(userData.cart.length);
-            cartLength.innerHTML = `Cart (${cart.length})`;
+            
+            // updateCart()
+            console.log('added to cart');
+            // console.log(cart);
+            window.reload()
           })
           .catch((err) => {
             console.log("error updating cart");
@@ -450,7 +447,7 @@ function cartDisplay() {
                 <img src="${ele.image1}" alt="Product ${i}" style="width: 40%;>
               </div>
               <div class="col-md-6 cart-item-info">
-                <div class="cart-item-title">${ele.detail1}</div>
+                <div class="cart-item-title">${ele.detail1.slice(0,20)}...</div>
                
               </div>
               <div class="cart-item-price">$${ele.price1}</div>
@@ -479,6 +476,22 @@ function cartDisplay() {
 
 cartDisplay();
 
+function updateCart() {
+
+
+  // const docRef = doc(db, "users", userId);
+  // getDoc(docRef)
+  // .then((doc) => {
+  //   if (doc.exists) {
+  //     userData = doc.data();
+  //     cartLength.innerHTML = `Cart (${userData.cart.length})`;
+     
+  //   } 
+  // })
+  console.log(cart)
+}
+
+
 function displaying() {
   try {
     if (cart.length !== 0) {
@@ -492,8 +505,8 @@ function displaying() {
           <img src="${ele.image1}" alt="Product ${i}" style="width: 40%;>
         </div>
         <div class="col-md-6 cart-item-info">
-          <div class="cart-item-title">${ele.detail1}</div>
-         
+          <div class="cart-item-title">${ele.detail1.slice(0,20)}...</div>
+             
         </div>
         <div class="cart-item-price">$${ele.price1}</div>
         <div class="cart-item-price">$${totl} </div>
@@ -508,7 +521,7 @@ function displaying() {
       <hr>
       `;
       });
-      console.log("here");
+     
     } else {
       serial.innerHTML = "NO ITEMS INSIDE THE CART";
     }
@@ -538,9 +551,11 @@ try {
         if (cart[i].id === update.id) {
           cart[id] = update;
         }
-        total.push(cart[i].total);
+        total.push(Number(cart[i].total));
+  
         let grand = total.reduce((acc, cur) => acc + cur);
         grandTotal.innerHTML = `Total: $${grand}.00`;
+
         displaying();
       }
 
@@ -557,7 +572,7 @@ try {
           }
           total.push(cart[i].total);
           let grand = total.reduce((acc, cur) => acc + cur);
-          grandTotal.innerHTML = `Total: $${grand.toFixed(2)}`;
+          grandTotal.innerHTML = `Total: $${grand}:00`;
           displaying();
         }
       } else {
@@ -574,12 +589,11 @@ try {
       const update = {
         cart,
       };
-      console.log(update);
+      
       try {
         await updateDoc(userRef, update, { merge: true });
-        console.log("User information stored successfully");
       } catch (error) {
-        console.error("Error storing user information:", error);
+       
       }
     }, 5000);
   });
@@ -595,7 +609,6 @@ function grand() {
         .then((result) => {
           const usercart = result.data();
           const cart = usercart.cart;
-          console.log(cart);
           let gra = cart
             .map((ele, i) => {
               return Number(ele.total);
@@ -624,7 +637,7 @@ function grand() {
             return acc + tot;
           });
       } else {
-        grandTotal.innerHTML = `Total: $${total.toFixed(2)}`;
+        grandTotal.innerHTML = `Total: $${total}:00`;
         return;
       }
     }

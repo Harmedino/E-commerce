@@ -83,11 +83,12 @@ function getUserProfileData(userId) {
         loadingSpinner.style.display = "none";
         profileBody.hidden = false
       } else {
-        console.log("User profile not found.");
+        // console.log("User profile not found.");
+        loadingSpinner.innerHTML = 'User profile not found try again'
       }
     })
     .catch((error) => {
-      console.error("Error fetching user data:", error);
+      loadingSpinner.innerHTML = "Error fetching user data:" + error.message
     });
     
    

@@ -36,6 +36,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 1000;
+  box-shadow:  2px 1px 9px #000000;
 }
 nav label {
   font-size: 40px;
@@ -326,7 +327,7 @@ footer {
   }
   #navbarNav ul{
     flex-direction: column;
-    font-size: 42px;
+    font-size: 32px;
     font-weight: bolder;
   }
   #navbarNav ul li{
@@ -334,15 +335,15 @@ footer {
 
   }
   .cart{
-    margin-top: -130px;
+    margin-top: -230px;
     width: 100%;
     margin: auto;
  
     height: 170px;
   }
   .carting a, .dropdown a{
-    padding: 20px !important;
-    font-size: 34px;
+    padding: 10px !important;
+    font-size: 24px;
   }
 
   nav .navs.show{
@@ -350,4 +351,11 @@ footer {
    
   }
 
+}
+
+
+@media (max-width: 488px) {
+  nav label {
+    font-size: 24px;
+  }
 }
